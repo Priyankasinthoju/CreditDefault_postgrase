@@ -186,4 +186,5 @@ def main():
         
 
 if __name__ == "__main__":
+    app.create_all()
     app.run(debug=True)
