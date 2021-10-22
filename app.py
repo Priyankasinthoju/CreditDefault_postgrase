@@ -11,7 +11,7 @@ currentdirectory = os.path.dirname(os.path.abspath(__file__))
 
 app = Flask("__name__")
 model = pickle.load(open('random_forest_classifier_model.pkl', 'rb'))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ftskurjvkmibdi:5aca60a09f874fd51f51c64fec2a0d9738c9b8e41ef96efc3ec3642f39bdfa30@ec2-34-196-34-142.compute-1.amazonaws.com:5432/dfb8s06b3f9r93'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'DATABASE_URL'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
@@ -180,7 +180,6 @@ def main():
             entry = CustomerDf(FirstName,LastName,Email,Education,Age,SSN,PhoneNumber,Gender,MaritalStatus,CreditAmount,Rpay_Status_1,Rpay_Status_2,Rpay_Status_3,Rpay_Status_4,Rpay_Status_5,Rpay_Status_6,Statement_1,Statement_2,Statement_3,Statement_4,Statement_5,Statement_6,Payment_1,Payment_2,Payment_3,Payment_4,Payment_5,Payment_6,Default_pay,Default_Status)
             db.session.add(entry)
             db.session.commit()
-            app.create_all()
     except:
         alert_message = "Please enter relevant information."
     return render_template('webpageupdated.html',alert_message = alert_message, success_message = success_message)
