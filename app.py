@@ -11,7 +11,7 @@ currentdirectory = os.path.dirname(os.path.abspath(__file__))
 
 app = Flask("__name__")
 model = pickle.load(open('random_forest_classifier_model.pkl', 'rb'))
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ftskurjvkmibdi:5aca60a09f874fd51f51c64fec2a0d9738c9b8e41ef96efc3ec3642f39bdfa30@ec2-34-196-34-142.compute-1.amazonaws.com:5432/dfb8s06b3f9r93'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
